@@ -1,0 +1,23 @@
+<library>
+    <book id="B1">
+        <title>Introduction to Algorithms</title>
+        <author>Thomas H. Cormen</author>
+        <publisher>MIT Press</publisher>
+        <price>99.95</price>
+        <publicationYear>2009</publicationYear>
+    </book>
+    <book id="B2">
+        <title>Computer Networking</title>
+        <author>Kurose and Ross</author>
+        <publisher>Pearson</publisher>
+        <price>85.00</price>
+        <publicationYear>2020</publicationYear>
+    </book>
+    <book id="B3">
+        <title>Artificial Intelligence</title>
+        <author>Stuart Russell</author>
+        <publisher>Pearson</publisher>
+        <price>150.00</price>
+        <publicationYear>2021</publicationYear>
+    </book>
+</library>
