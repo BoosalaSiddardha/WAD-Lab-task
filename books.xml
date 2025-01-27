@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="books.xsl"?>
+<library>
+    <book id="B001">
+        <title>Introduction to Algorithms</title>
+        <author>Thomas H. Cormen</author>
+        <publisher>MIT Press</publisher>
+        <price>99.95</price>
+        <year>2009</year>
+    </book>
+    <book id="B002">
+        <title>Clean Code</title>
+        <author>Robert C. Martin</author>
+        <publisher>Prentice Hall</publisher>
+        <price>45.50</price>
+        <year>2008</year>
+    </book>
+    <book id="B003">
+        <title>Artificial Intelligence: A Modern Approach</title>
+        <author>Stuart Russell, Peter Norvig</author>
+        <publisher>Pearson</publisher>
+        <price>70.00</price>
+        <year>2020</year>
+    </book>
+</library>

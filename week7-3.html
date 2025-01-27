@@ -1,0 +1,94 @@
+<html>
+<head>
+    <title>Library Books</title>
+    <style>
+        .book {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Library Books</h1>
+    <div id="books-container"></div>
+
+    <h2>Add a New Book</h2>
+    <form id="book-form">
+        <input type="text" id="title" placeholder="Title" required>
+        <input type="text" id="author" placeholder="Author" required>
+        <input type="text" id="publisher" placeholder="Publisher" required>
+        <input type="number" id="price" placeholder="Price" required step="0.01">
+        <input type="number" id="year" placeholder="Publication Year" required>
+        <button type="submit">Add Book</button>
+    </form>
+
+    <script>
+        let xmlDoc; 
+        function loadXML() {
+            fetch('books.xml')
+                .then(response => response.text())
+                .then(data => {
+                    const parser = new DOMParser();
+                    xmlDoc = parser.parseFromString(data, "application/xml");
+                    displayBooks(xmlDoc);
+                })
+        }
+
+        function displayBooks(xmlDoc) {
+            const booksContainer = document.getElementById("books-container");
+            booksContainer.innerHTML = "";
+
+            const books = xmlDoc.getElementsByTagName("book");
+            Array.from(books).forEach(book => {
+                const title = book.getElementsByTagName("title")[0]?.textContent || "N/A";
+                const author = book.getElementsByTagName("author")[0]?.textContent || "N/A";
+                const publisher = book.getElementsByTagName("publisher")[0]?.textContent || "N/A";
+                const price = book.getElementsByTagName("price")[0]?.textContent || "N/A";
+                const year = book.getElementsByTagName("publicationYear")[0]?.textContent || "N/A";
+
+                const bookDiv = document.createElement("div");
+                bookDiv.className = "book";
+                bookDiv.innerHTML = `
+                    <h3>${title}</h3>
+                    <p><strong>Author:</strong> ${author}</p>
+                    <p><strong>Publisher:</strong> ${publisher}</p>
+                    <p><strong>Price:</strong> $${price}</p>
+                    <p><strong>Publication Year:</strong> ${year}</p>
+                `;
+
+                booksContainer.appendChild(bookDiv);
+            });
+        }
+
+        document.getElementById("book-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const title = document.getElementById("title").value;
+            const author = document.getElementById("author").value;
+            const publisher = document.getElementById("publisher").value;
+            const price = document.getElementById("price").value;
+            const year = document.getElementById("year").value;
+
+            const newBookXML = `
+                <book id="CS${xmlDoc.getElementsByTagName('book').length + 1}">
+                    <title>${title}</title>
+                    <author>${author}</author>
+                    <publisher>${publisher}</publisher>
+                    <price>${price}</price>
+                    <publicationYear>${year}</publicationYear>
+                </book>`;
+            
+            const parser = new DOMParser();
+            const newBookDoc = parser.parseFromString(newBookXML, "application/xml");
+            xmlDoc.getElementsByTagName('library')[0].appendChild(newBookDoc.documentElement);
+
+            displayBooks(xmlDoc);
+
+            this.reset();
+        });
+
+        loadXML();
+    </script>
+</body>
+</html>
