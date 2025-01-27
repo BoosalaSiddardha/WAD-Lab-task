@@ -7,8 +7,7 @@
                 table {
                     width: 80%;
                     border-collapse: collapse;
-                    margin: 20px auto;
-                    font-family: Arial, sans-serif;
+                    margin: auto;
                 }
                 th, td {
                     border: 1px solid #ddd;
@@ -16,15 +15,14 @@
                     text-align: left;
                 }
                 th {
-                    background-color: #f4f4f4;
+                    background-color: #018749;
                     font-weight: bold;
                 }
-                tr:nth-child(even) {
-                    background-color: #f9f9f9;
+                td {
+                    background-color: #90EE90;
+                    font-weight: bold;
                 }
-                tr:hover {
-                    background-color: #f1f1f1;
-                }
+
             </style>
         </head>
         <body>
